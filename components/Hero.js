@@ -24,10 +24,9 @@ export default function Hero() {
           I build full-stack JavaScript applications at Outgive.
         </h2>
         <p className="mt-5 text-2xl text-gray-500">
-          During the day, I lead a team of 5 developers build analytics and
-          accounting tools for Amazon sellers. At night, I build profitable
-          internet businesses and share my love for software development to
-          anyone who will listen.
+          During the day, I build analytics and accounting tools for Amazon
+          sellers. At night, I build profitable internet businesses and share my
+          love for software development to anyone who will listen.
         </p>
       </div>
     </div>
