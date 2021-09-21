@@ -82,7 +82,7 @@ const posts = [
 
 export default function Blog() {
   return (
-    <div className="pt-16 pb-20 lg:pt-24 lg:pb-28">
+    <div className="pt-16 lg:pt-24">
       <div className="relative divide-y-2 divide-gray-200">
         <div>
           <h2 className="text-2xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">

@@ -18,3 +18,19 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.blog-content h2 {
+  @apply text-2xl font-bold text-gray-900;
+}
+
+.blog-content p {
+  @apply text-lg text-gray-900;
+}
+
+.blog-content ul {
+  @apply text-lg list-disc list-inside;
+}
+
+.blog-content ol {
+  @apply text-lg list-decimal list-inside;
+}

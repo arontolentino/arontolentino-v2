@@ -2,6 +2,7 @@ import Categories from '../components/Categories';
 import Layout from '../components/Layout';
 import Popular from '../components/Popular';
 import Post from '../components/Post';
+import { createApolloFetch } from 'apollo-fetch';
 
 const posts = [
   {
@@ -82,20 +83,80 @@ const posts = [
   },
 ];
 
-export default function Blog() {
+export default function Blog({ posts, tags }) {
   return (
     <Layout>
-      <div className="grid grid-cols-1 gap-y-12 mt-8 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-0">
+      <div className="grid grid-cols-1 gap-y-12 mt-12 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-0">
         <div className="col-span-2 space-y-8">
-          {posts.map((post) => (
-            <Post key={post.title} post={post} />
+          {posts.map(({ node }) => (
+            <Post key={node.slug} post={node} />
           ))}
         </div>
         <div className="space-y-6">
           <Categories />
-          {/* <Popular /> */}
         </div>
       </div>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  try {
+    const uri = 'https://cms.arontolentino.com/graphql';
+
+    const query = `
+			query Posts {
+				posts {
+					edges {
+						node {
+							title
+							slug
+							content
+							summary {
+								summary
+							}
+							date
+							tags {
+								edges {
+									node {
+										name
+										slug
+										color {
+											text
+											background
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				tags {
+					edges {
+						node {
+							name
+							slug
+							color {
+								text
+								background
+							}
+						}
+					}
+				}
+			}
+		`;
+
+    const apolloFetch = createApolloFetch({ uri });
+
+    const res = await apolloFetch({ query });
+
+    return {
+      props: {
+        posts: res.data.posts.edges,
+        tags: res.data.tags.edges,
+      },
+    };
+  } catch (err) {
+    console.log(err.message);
+  }
 }
