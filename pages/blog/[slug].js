@@ -41,7 +41,7 @@ export default function Blog({ post, tags }) {
           />
         </div>
         <div className="col-span-1 space-y-8">
-          <Categories />
+          <Categories tags={tags} />
           {/* <Popular /> */}
         </div>
       </div>
@@ -96,18 +96,16 @@ export async function getStaticProps({ params }) {
           }
           date
 				}
-				tags {
-					edges {
-						node {
-							name
-              slug
-              color {
-                text
-                background
-              }
-						}
-					}
-				}
+        tags {
+          nodes {
+            name
+            slug
+            color {
+              text
+              background
+            }
+          }
+        }
       }
 		`;
 
@@ -118,7 +116,7 @@ export async function getStaticProps({ params }) {
     return {
       props: {
         post: res.data.postBy,
-        tags: res.data.tags.edges,
+        tags: res.data.tags.nodes,
       },
     };
   } catch (err) {

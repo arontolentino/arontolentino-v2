@@ -1,5 +1,6 @@
-import Badge from './Badge';
+import Moment from 'react-moment';
 import Link from 'next/link';
+import Badge from './Badge';
 
 export default function Post({ post }) {
   const {
@@ -7,6 +8,8 @@ export default function Post({ post }) {
     summary: { summary },
     tags,
     slug,
+    readingTime,
+    date,
   } = post;
 
   return (
@@ -14,21 +17,22 @@ export default function Post({ post }) {
       <div>
         <Badge
           // href={post.category.href}
-          // color={post.category.color}
-          name={tags.edges[0].node.name}
+          color={tags.nodes[0].color.text}
+          background={tags.nodes[0].color.background}
+          name={tags.nodes[0].name}
         />
       </div>
-      <Link href={`blog/${slug}`} className="block mt-4">
-        <a>
+      <Link href={`blog/${slug}`}>
+        <a className="mt-2 block">
           <p className="text-2xl font-semibold text-gray-900">{title}</p>
           <p className="mt-3 text-base text-gray-500">{summary}</p>
         </a>
       </Link>
       <div className="mt-6">
         <div className="flex space-x-1 text-sm text-gray-500">
-          {/* <time dateTime={post.datetime}>{post.date}</time> */}
+          <Moment format="LL">{post.date}</Moment>
           <span aria-hidden="true">&middot;</span>
-          {/* <span>{post.readingTime} read</span> */}
+          <span>{readingTime} minute read</span>
         </div>
       </div>
     </div>
