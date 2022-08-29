@@ -19,8 +19,12 @@ a {
   box-sizing: border-box;
 }
 
+.blog-content {
+  @apply leading-relaxed text-gray-900;
+}
+
 .blog-content h2 {
-  @apply text-2xl font-bold text-gray-900;
+  @apply text-2xl font-bold;
 }
 
 .blog-content p {
@@ -28,7 +32,15 @@ a {
 }
 
 .blog-content ul {
-  @apply text-lg list-disc list-inside;
+  @apply text-lg list-disc list-inside text-gray-900;
+}
+
+.blog-content li {
+  @apply ml-4;
+}
+
+.blog-content li ul {
+  list-style-type: circle;
 }
 
 .blog-content ol {
