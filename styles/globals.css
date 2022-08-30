@@ -39,8 +39,12 @@ a {
   @apply ml-4;
 }
 
-.blog-content li ul {
+.blog-content ul li ul {
   list-style-type: circle;
+}
+
+.blog-content ul li ul li ul {
+  list-style-type: square;
 }
 
 .blog-content ol {
