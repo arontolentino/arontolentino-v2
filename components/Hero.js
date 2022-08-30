@@ -7,7 +7,7 @@ export default function Hero() {
         </h2>
         <p className="mt-5 text-2xl text-gray-500">
           During the day, I build digital banking products for Canadian
-          Businesses at Vault. At night, I build profitable internet businesses
+          businesses at Vault. At night, I build profitable internet businesses
           and share my love for software development to anyone who will listen.
         </p>
       </div>
