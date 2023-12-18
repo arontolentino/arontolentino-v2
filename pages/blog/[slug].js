@@ -3,6 +3,7 @@ import Categories from '../../components/Categories';
 import Layout from '../../components/Layout';
 import { createApolloFetch } from 'apollo-fetch';
 import Moment from 'react-moment';
+import moment from 'moment';
 
 export default function Blog({ post, tags }) {
   const {
@@ -20,6 +21,8 @@ export default function Blog({ post, tags }) {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={summary} />
         <meta property="og:image" content={featuredImage?.node?.sourceUrl} />
+        <meta name="author" content="Aron Tolentino" />
+        <meta name="date" content={moment(date).format('YYYY-MM-DD')} />
       </Head>
       <Layout>
         <div className="grid grid-cols-1 gap-y-12 mt-12 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-0">
