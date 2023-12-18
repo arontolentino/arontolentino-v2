@@ -20,7 +20,7 @@ a {
 }
 
 .blog-content {
-  @apply leading-relaxed text-gray-900;
+  @apply leading-loose text-gray-900;
 }
 
 .blog-content h2 {
@@ -49,4 +49,14 @@ a {
 
 .blog-content ol {
   @apply text-lg list-decimal list-inside;
+}
+
+.blog-content code {
+  @apply rounded-md;
+}
+
+.blog-content code:not(.hljs) {
+  background: #011627;
+  font-size: 1em;
+  @apply bg-gray-800 text-white px-1.5 rounded-md;
 }
